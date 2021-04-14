@@ -10,8 +10,11 @@ from bs4 import BeautifulSoup as soup
 
 
 url = 'https://www.singaporetech.edu.sg/undergraduate-programmes/engineering'
-badurl ='https://www.singaporetech.edu.sg/undergraduate-programmes/engineerin'
 
+# --- badurl e.g. --- #
+# badurl ='https://www.singaporetech.edu.sg/undergraduate-programmes/engineerin'
+# bad_r = requests.get(badurl)
+# print(bad_r.raise_for_status())
 
 r = requests.get(url)
 print(r, '\n ---')
