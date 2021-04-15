@@ -41,3 +41,4 @@ print('<----- START OF BeautifulSoup OUTPUT ----->')
 # ---- BeautifulSoup Parsing ---- #
 soup = bs4.BeautifulSoup(r.text, 'html.parser')
 print('<----- END OF BeautifulSoup OUTPUT ----->')
+soup.select(#block-sit-2020-content > div > div.group-left-right-container > div > div > div.group-left > div.group-programme-details.row--md.paragraph-wrapper > div:nth-child(3)')
