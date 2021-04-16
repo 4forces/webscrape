@@ -51,6 +51,19 @@ def seturl(url):
 
 def urltotext(url):
     """Saves downloaded webpage to binary text"""
+    r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+
+    def checkurl():
+        """Checks, returns response if url is working"""
+        # url = input("Input URL: ")
+        # r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+        print('<Url check>: ', url, '\n')
+        print(r)
+        print('\n<Start of url sample>: ', r.text[:1000])
+        print('\n<r.raise_for_status>:', r.raise_for_status())
+
+    checkurl()
+
     # wb: write binary to avoid unicode encode issues
     playfile = open('testFile.txt', 'wb')
 
