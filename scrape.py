@@ -35,7 +35,7 @@ def seturl(url):
         print(prog_name)
         print(prog_desc)
         print(duration)
-    except:
+    except IndexError:
         print('Url seems invalid. Please check that url is an SIT programme page.')
 
 
