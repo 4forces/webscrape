@@ -4,6 +4,13 @@ import rpa, os, requests, bs4, selenium as s, pandas as p
 # 1. click on programme
 # 2. extract prog name, prog desc, prog duration etc
 
+# --- urls --- #
+ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
+CEFT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/chemical-engineering-and-food-technology'
+DSB = 'https://www.singaporetech.edu.sg/undergraduate-programmes/design-and-specialised-businesses'
+HSS = 'https://www.singaporetech.edu.sg/undergraduate-programmes/health-and-social-sciences'
+ICT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/infocomm-technology'
+
 
 def seturl(url):
     """Prompts user for url"""
