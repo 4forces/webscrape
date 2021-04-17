@@ -73,7 +73,7 @@ def seturl(url):
         print(t_credits)
         print(location)
 
-        with open('innovators.csv', 'w', newline='') as file:
+        with open('innovators.csv', 'a+', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([prog_name, prog_desc, qualification, ou, duration, t_credits])
 
