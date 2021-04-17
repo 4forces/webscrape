@@ -1,10 +1,11 @@
-import rpa, os, requests, bs4, selenium as s, pandas as p
+import rpa, os, requests, bs4, csv, selenium as s, pandas as p
+
 # from urllib.request import Request, urlopen
 
 # 1. click on programme
 # 2. extract prog name, prog desc, prog duration etc
 
-# --- urls --- #
+# ----- urls ----- #
 ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
 CEFT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/chemical-engineering-and-food-technology'
 DSB = 'https://www.singaporetech.edu.sg/undergraduate-programmes/design-and-specialised-businesses'
@@ -27,23 +28,68 @@ def seturl(url):
         print('\n<r.raise_for_status>:', r.raise_for_status())
 
     checkurl()
+
     try:
         soup = bs4.BeautifulSoup(r.text, 'html.parser')
+
         prog_name_raw = soup.select('#block-sit-2020-content > div > div.group-header.row--lg > header > div > div > '
                                     'div.banner-header__overlay.wrap--center.wrap--xl > div > div > h1')
         prog_name = prog_name_raw[0].text.strip()
+
         prog_desc_raw = soup.select('#block-sit-2020-content > div > div.group-header.row--lg > header > div > div > '
                                     'div.banner-header__overlay.wrap--center.wrap--xl > div > div > div.subtitle')
         prog_desc = prog_desc_raw[0].text.strip()
-        duration_raw = soup.select(
-            '#block-sit-2020-content > div > div.group-left-right-container > div > div > div.group-left > '
-            'div.group-programme-details.row--md.paragraph-wrapper > div:nth-child(3)')
+
+        qualification_raw = soup.select('#block-sit-2020-content > div > div.group-left-right-container > div > div > '
+                                        'div.group-left > div.group-programme-details.row--md.paragraph-wrapper > '
+                                        'div:nth-child(1)')
+        qualification = qualification_raw[0].text.strip()
+
+        ou_raw = soup.select('#block-sit-2020-content > div > div.group-left-right-container > div > div > '
+                             'div.group-left > div.group-programme-details.row--md.paragraph-wrapper > '
+                             'div:nth-child(2)')
+        ou = ou_raw[0].text.strip()
+
+        duration_raw = soup.select('#block-sit-2020-content > div > div.group-left-right-container > div > div > '
+                                   'div.group-left > div.group-programme-details.row--md.paragraph-wrapper > '
+                                   'div:nth-child(3)')
         duration = duration_raw[0].text.strip()
+
+        t_credits_raw = soup.select('#block-sit-2020-content > div > div.group-left-right-container > div > div > '
+                                    'div.group-left > div.group-programme-details.row--md.paragraph-wrapper > '
+                                    'div:nth-child(4)')
+        t_credits = t_credits_raw[0].text.strip()
+
+        location_raw = soup.select('#block-sit-2020-content > div > div.group-left-right-container > div > div > '
+                                   'div.group-left > div.group-programme-details.row--md.paragraph-wrapper > '
+                                   'div:nth-child(7)')
+        location = location_raw[0].text.strip()
+
         print(prog_name)
         print(prog_desc)
+        print(qualification)
+        print(ou)
         print(duration)
+        print(t_credits)
+        print(location)
+
+        with open('innovators.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([prog_name, prog_desc, qualification, ou, duration, t_credits])
+
     except IndexError:
         print('Url seems invalid. Please check that url is an SIT programme page.')
+
+
+# row_list = [["SN", "Name", "Contribution"],
+#             [1, "Linus Torvalds", "Linux Kernel"],
+#             [2, "Tim Berners-Lee", "World Wide Web"],
+#             [3, "Guido van Rossum", "Python Programming"]
+#             ]
+
+# with open('innovators.csv', 'w', newline='') as file:
+#     writer = csv.writer(file)
+#     writer.writerow([, , ])
 
 
 # def checkurl():
