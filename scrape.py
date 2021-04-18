@@ -1,4 +1,7 @@
-import rpa, os, requests, bs4, csv, selenium as s, pandas as p
+import bs4
+import csv
+import requests
+
 
 # from urllib.request import Request, urlopen
 
@@ -6,12 +9,23 @@ import rpa, os, requests, bs4, csv, selenium as s, pandas as p
 # 2. extract prog name, prog desc, prog duration etc
 
 # ----- urls ----- #
-ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
 CEFT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/chemical-engineering-and-food-technology'
 DSB = 'https://www.singaporetech.edu.sg/undergraduate-programmes/design-and-specialised-businesses'
 HSS = 'https://www.singaporetech.edu.sg/undergraduate-programmes/health-and-social-sciences'
 ICT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/infocomm-technology'
+ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
 
+# ----- RPA for python ----- #
+# import rpa as r
+# r.init()
+# r.url(ENG)
+# r.click('//*[@id="block-sit-2020-content"]/div/div[2]/div/div/div/div/div/ol/li[1]/div/span/div/a')
+# r.url(ENG)
+
+# ----- Selenium Webdriver ----- #
+# from selenium import webdriver
+# browser = webdriver.Firefox()
+# browser.get(ENG)
 
 def seturl(url):
     """Prompts user for url"""
