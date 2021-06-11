@@ -2,7 +2,6 @@ import bs4
 import csv
 import requests
 
-
 # from urllib.request import Request, urlopen
 
 # 1. click on programme
@@ -13,7 +12,7 @@ CEFT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/chemical-engin
 DSB = 'https://www.singaporetech.edu.sg/undergraduate-programmes/design-and-specialised-businesses'
 HSS = 'https://www.singaporetech.edu.sg/undergraduate-programmes/health-and-social-sciences'
 ICT = 'https://www.singaporetech.edu.sg/undergraduate-programmes/infocomm-technology'
-ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
+# ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
 
 # ----- RPA for python ----- #
 # import rpa as r
@@ -23,9 +22,14 @@ ENG = 'https://www.singaporetech.edu.sg/postgraduate-programmes/engineering'
 # r.url(ENG)
 
 # ----- Selenium Webdriver ----- #
-# from selenium import webdriver
-# browser = webdriver.Firefox()
-# browser.get(ENG)
+ENG='https://www.singaporetech.edu.sg'
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+opts = Options()
+opts.log.level="trace"
+browser = webdriver.Firefox(options=opts, executable_path=r'd:\wd\geckodriver.exe')
+browser.get(ENG)
+
 
 def seturl(url):
     """Prompts user for url"""
